@@ -483,6 +483,8 @@ fetch_data_string(const char *url)
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_writer);
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
 
+    curl_easy_setopt(curl, CURLOPT_IPRESOLVE, 1L);
+
 	CURLcode result = curl_easy_perform(curl);
 	if (result != 0) {
 		fprintf(stderr, "Could not fetch URL: %s\n", url);
